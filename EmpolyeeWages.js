@@ -60,3 +60,20 @@ for (let day = 0; day < NUM_OF_WORKING_DAYS; day++) {
 
 // Calculate and Display Monthly Wage
 console.log(`Total Monthly Hours: ${totalEmpHrs}, Total Monthly Wage: ${totalEmpHrs * WAGE_PER_HOUR}`);
+
+// UC-5: Calculate Wages Till a Condition of Total Working Hours or Days is Reached
+const MAX_HRS_IN_MONTH = 100;
+const NUM_OF_WORKING_DAYS_LIMIT = 10;
+let totalEmpHrsLimit = 0;
+let totalWorkingDaysLimit = 0;
+
+// Use a while loop to ensure work continues until either max hours or max days are reached
+while (totalEmpHrsLimit < MAX_HRS_IN_MONTH && totalWorkingDaysLimit < NUM_OF_WORKING_DAYS_LIMIT) {
+    totalWorkingDaysLimit++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    totalEmpHrsLimit += getWorkingHours(empCheck);
+    let empWageLimit = totalEmpHrsLimit * WAGE_PER_HOUR;
+
+    // Display running totals for days worked, hours worked, and wages
+    console.log(`Total Days: ${totalWorkingDaysLimit}, Total Hrs: ${totalEmpHrsLimit}, Emp Wage: ${empWageLimit}`);
+}
