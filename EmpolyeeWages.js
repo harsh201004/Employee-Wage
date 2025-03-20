@@ -107,3 +107,33 @@ empWage = calcDailyWage(totalEmpHr);
 // Display total work stats and daily wages array
 console.log(`Total Days: ${totalWorkingDays}, Total Hrs: ${totalEmpHr}, Emp Wage: ${empWage}`);
 console.log("Daily Wages Array:", empDailyWageArr);
+
+// UC-7: Filter data using Array Helper Functions
+
+// UC7A: Calculate Total Employee Wage using forEach and reduce
+let totalEmpWage = 0;
+empDailyWageArr.forEach(wage => totalEmpWage += wage);
+console.log("UC7A - Total Wage using forEach:", totalEmpWage);
+console.log("UC7A - Total Wage using reduce:", empDailyWageArr.reduce((total, wage) => total + wage, 0));
+
+// UC7B: Map Day with Daily Wage
+let dailyCounter = 0;
+let mapDayWithWageArr = empDailyWageArr.map(wage => `Day ${++dailyCounter}: ${wage}`);
+console.log("UC7B - Day with Wages:", mapDayWithWageArr);
+
+// UC7C: Filter Days with Full-Time Wage
+let fullTimeWageArr = empDailyWageArr.filter(wage => wage === 160);
+console.log("UC7C - Full-Time Wage Days:", fullTimeWageArr);
+
+// UC7D: Find First Day with Full-Time Wage
+console.log("UC7D - First Full-Time Wage Earned on:", empDailyWageArr.find(wage => wage === 160));
+
+// UC7E: Check if All Entries are Full-Time Wage
+console.log("UC7E - Are all full-time wages?:", fullTimeWageArr.every(wage => wage === 160));
+
+// UC7F: Check if Any Part-Time Wage Exists
+console.log("UC7F - Is there any Part-Time Wage?:", empDailyWageArr.some(wage => wage === 80));
+
+// UC7G: Count Number of Days Worked
+let totalDaysWorked = empDailyWageArr.reduce((days, wage) => (wage > 0 ? days + 1 : days), 0);
+console.log("UC7G - Number of Days Worked:", totalDaysWorked);
