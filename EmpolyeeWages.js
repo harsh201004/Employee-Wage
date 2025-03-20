@@ -77,3 +77,33 @@ while (totalEmpHrsLimit < MAX_HRS_IN_MONTH && totalWorkingDaysLimit < NUM_OF_WOR
     // Display running totals for days worked, hours worked, and wages
     console.log(`Total Days: ${totalWorkingDaysLimit}, Total Hrs: ${totalEmpHrsLimit}, Emp Wage: ${empWageLimit}`);
 }
+
+// UC-6: Store Daily Wage in an Array
+
+// Function to calculate daily wage based on hours worked
+function calcDailyWage(empHrs) {
+    return empHrs * WAGE_PER_HOUR;
+}
+
+// Define max conditions for the while loop
+const MAX_HRS_INMONTH = 160;
+const NUM_OF_WORKINGDAYS = 20;
+let totalEmpHr = 0;
+let totalWorkingDays = 0;
+let empDailyWageArr = new Array(); // Array to store daily wages
+
+// Use a while loop to track wages over time
+while (totalEmpHr <= MAX_HRS_INMONTH && totalWorkingDays < NUM_OF_WORKINGDAYS) {
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    let empHrs = getWorkingHours(empCheck);
+    totalEmpHr += empHrs;
+    empDailyWageArr.push(calcDailyWage(empHrs)); // Store daily wage in array
+}
+
+// Calculate total wage
+empWage = calcDailyWage(totalEmpHr);
+
+// Display total work stats and daily wages array
+console.log(`Total Days: ${totalWorkingDays}, Total Hrs: ${totalEmpHr}, Emp Wage: ${empWage}`);
+console.log("Daily Wages Array:", empDailyWageArr);
